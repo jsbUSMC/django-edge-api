@@ -46,8 +46,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Django REST Framework
+    'rest_framework',
+
+    # django-extensions package
+    'django_extensions',
+
+    # django-phonenumber-field provides ModelField classes for phone numbers
+    'phonenumber_field',
+
     # django-authools custom User model
     'authtools',
+
     'apps.authentication',
 ]
 
