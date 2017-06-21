@@ -1,5 +1,5 @@
 from authtools.models import User
-import pyjwt
+import jwt
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -31,7 +31,7 @@ class Analyst(User):
         """
         return self._generate_jwt_token()
 
-  def _generate_jwt_token(self):
+    def _generate_jwt_token(self):
         """
         Generates a JSON Web Token that stores this user's ID and has an expiry
         date set to 60 days into the future.

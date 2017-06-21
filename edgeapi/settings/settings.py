@@ -96,7 +96,7 @@ DATABASES = {
 # https://django-authtools.readthedocs.io/en/latest/index.html
 # Point to our proxy model in authentication app to make use of the methods
 # to retrieve a user's JWT
-AUTH_USER_MODEL = 'authentication.User'
+AUTH_USER_MODEL = 'authtools.User'
 
 
 # Password validation
