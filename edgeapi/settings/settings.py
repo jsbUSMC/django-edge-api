@@ -11,16 +11,24 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+from os.path import join, dirname, abspath, exists
+import environ
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = dirname(dirname(dirname(abspath(__file__))))
+
+# 12Factor-inspired environment variables
+ENV = environ.Env()
+ENV_FILE = join(dirname(__file__), 'config.env')
+if exists(ENV_FILE):
+    ENV.read_env(str(ENV_FILE))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 's^x*r+%(vxwvak#*&ei!t%sb6p!q3^bu12(s)%l-vvz+g5ytp_'
+SECRET_KEY = ENV('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,6 +45,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # django-authools custom User model
+    'authtools',
+    'apps.authentication',
 ]
 
 MIDDLEWARE = [
@@ -79,6 +91,12 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# Override the default User model to use django-authtools custom User model
+# https://django-authtools.readthedocs.io/en/latest/index.html
+# Point to our proxy model in authentication app to make use of the methods
+# to retrieve a user's JWT
+AUTH_USER_MODEL = 'authentication.User'
 
 
 # Password validation

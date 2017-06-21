@@ -1,0 +1,6 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+  "editor.tabSize": 4,
+  "python.pythonPath": "~/.virtualenvs/edgeapi/bin/python3.6",
+  "python.linting.pylintPath": "~/.virtualenvs/edgeapi/bin/pylint"
+}
