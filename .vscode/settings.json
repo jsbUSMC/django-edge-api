@@ -2,5 +2,8 @@
 {
   "editor.tabSize": 4,
   "python.pythonPath": "~/.virtualenvs/edgeapi/bin/python3.6",
-  "python.linting.pylintPath": "~/.virtualenvs/edgeapi/bin/pylint"
+  "python.linting.pylintPath": "~/.virtualenvs/edgeapi/bin/pylint",
+  "python.linting.pylintArgs": [
+    "--load-plugins", "pylint_django"
+  ]
 }

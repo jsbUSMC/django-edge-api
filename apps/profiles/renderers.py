@@ -1,4 +1,4 @@
-from core.renderers import CustomJSONRenderer
+from apps.core.renderers import CustomJSONRenderer
 
 
 class ProfileJSONRenderer(CustomJSONRenderer):

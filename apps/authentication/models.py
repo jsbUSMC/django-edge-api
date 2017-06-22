@@ -1,10 +1,7 @@
-from authtools.models import User
-import jwt
 from datetime import datetime, timedelta
-
-from django.db import models
+import jwt
+from authtools.models import User
 from django.conf import settings
-from django.utils.translation import ugettext_lazy as _
 
 
 class Analyst(User):
@@ -19,6 +16,7 @@ class Analyst(User):
     only add methods/functionality to the inherited `User` model, we don't need Django
     ORM to create separate db tables for this class.
     """
+    #pylint: disable=too-few-public-methods
     class Meta:
         proxy = True
 
@@ -38,11 +36,11 @@ class Analyst(User):
         Generates a JSON Web Token that stores this user's ID and has an expiry
         date set to 60 days into the future.
         """
-        dt = datetime.now() + timedelta(days=60)
+        date_time = datetime.now() + timedelta(days=60)
 
         token = jwt.encode({
             'id': self.pk,
-            'exp': int(dt.strftime('%s'))
+            'exp': int(date_time.strftime('%s'))
         }, settings.SECRET_KEY, algorithm='HS256')
 
         return token.decode('utf-8')

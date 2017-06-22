@@ -58,7 +58,10 @@ INSTALLED_APPS = [
     # django-authools custom User model
     'authtools',
 
+    # our apps
     'apps.authentication',
+    'apps.profiles',
+    'apps.core',
 ]
 
 MIDDLEWARE = [
@@ -146,3 +149,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Django REST Framework-specific settings
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'apps.authentication.backends.JWTAuthentication',
+    ),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'EXCEPTION_HANDLER': 'apps.core.exceptions.core_exception_handler',
+    'NON_FIELD_ERRORS_KEY': 'error',
+    'PAGE_SIZE': 20,
+}
