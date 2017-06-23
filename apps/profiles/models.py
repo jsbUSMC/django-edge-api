@@ -1,13 +1,16 @@
+from __future__ import unicode_literals
+
 import uuid
 
 from phonenumber_field.modelfields import PhoneNumberField
 from django.db import models
 from django.conf import settings
+from django.utils.encoding import python_2_unicode_compatible
 
 from apps.core.models import TimestampedModel
 
 
-class Profile(TimestampedModel):
+class BaseProfile(TimestampedModel):
     # As mentioned, there is an inherent relationship between the Profile and
     # User models. By creating a one-to-one relationship between the two, we
     # are formalizing this relationship. Every user will have one -- and only
@@ -23,5 +26,10 @@ class Profile(TimestampedModel):
     # creates their account, so we specify `blank=True`.
     bio = models.TextField(blank=True, null=True)
 
+    class Meta:
+        abstract = True
+
+@python_2_unicode_compatible
+class Profile(BaseProfile):
     def __str__(self):
-        return self.user.name
+        return "{}'s profile". format(self.user)

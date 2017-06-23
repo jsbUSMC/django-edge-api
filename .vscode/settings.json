@@ -2,12 +2,12 @@
 {
   "editor.tabSize": 4,
   // Macbook Pro VS Code settings
-  // "python.pythonPath": "~/.virtualenvs/edgeapi/bin/python3.6",
-  // "python.linting.pylintPath": "~/.virtualenvs/edgeapi/bin/pylint",
+  "python.pythonPath": "~/.virtualenvs/edgeapi/bin/python3.6",
+  "python.linting.pylintPath": "~/.virtualenvs/edgeapi/bin/pylint",
 
   // Windows 7 VS Code settings
-  "python.pythonPath": "C:/users/jbissonette/Envs/edgeapi/Scripts/python3.6",
-  "python.linting.pylintPath": "C:/users/jbissonette/Envs/edgeapi/Scripts/pylint",
+  // "python.pythonPath": "C:/users/jbissonette/Envs/edgeapi/Scripts/python3.6",
+  // "python.linting.pylintPath": "C:/users/jbissonette/Envs/edgeapi/Scripts/pylint",
   "python.linting.pylintArgs": [
     "--load-plugins", "pylint_django"
   ]

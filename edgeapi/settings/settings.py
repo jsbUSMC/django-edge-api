@@ -55,6 +55,9 @@ INSTALLED_APPS = [
     # django-phonenumber-field provides ModelField classes for phone numbers
     'phonenumber_field',
 
+    # django-debug-toolbar for development
+    'debug_toolbar',
+
     # our apps
     'apps.authentication',
     'apps.profiles',
@@ -69,9 +72,16 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'edgeapi.urls'
+
+# Allow internal IPs for debugging
+INTERNAL_IPS = [
+    '127.0.0.1',
+    '0.0.0.1',
+]
 
 TEMPLATES = [
     {
