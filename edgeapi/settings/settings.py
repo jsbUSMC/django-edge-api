@@ -55,9 +55,6 @@ INSTALLED_APPS = [
     # django-phonenumber-field provides ModelField classes for phone numbers
     'phonenumber_field',
 
-    # django-authools custom User model
-    'authtools',
-
     # our apps
     'apps.authentication',
     'apps.profiles',
@@ -109,7 +106,7 @@ DATABASES = {
 # https://django-authtools.readthedocs.io/en/latest/index.html
 # Point to our proxy model in authentication app to make use of the methods
 # to retrieve a user's JWT
-AUTH_USER_MODEL = 'authtools.User'
+AUTH_USER_MODEL = 'authentication.User'
 
 
 # Password validation

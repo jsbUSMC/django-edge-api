@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Analyst
+from .models import User
 
 
-admin.register(Analyst)
+admin.register(User)

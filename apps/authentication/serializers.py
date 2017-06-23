@@ -26,7 +26,7 @@ class UserSerializer(ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('email', 'username', 'password', 'token', 'profile',)
+        fields = ('email', 'password', 'token', 'profile',)
 
         # The `read_only_fields` option is an alternative for explicitly
         # specifying the field with `read_only=True` like we did for password
@@ -137,7 +137,7 @@ class LoginSerializer(serializers.Serializer):
         # that we will see later on.
         return {
             'email': user.email,
-            'username': user.username,
+            'name': user.name,
             'token': user.token
         }
 
