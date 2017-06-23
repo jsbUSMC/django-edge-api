@@ -1,3 +1,4 @@
+import time
 from datetime import datetime, timedelta
 import jwt
 from authtools.models import User
@@ -36,11 +37,14 @@ class Analyst(User):
         Generates a JSON Web Token that stores this user's ID and has an expiry
         date set to 60 days into the future.
         """
-        date_time = datetime.now() + timedelta(days=60)
+        exactdatetime = datetime.now() + timedelta(days=60)
 
+        # Quick Windows 7 hack: the 'exp' key trips fatal exception for invalid formatted
+        # string. Replace the commented out line on mac OS
         token = jwt.encode({
             'id': self.pk,
-            'exp': int(date_time.strftime('%s'))
+            # 'exp': int(exactdatetime.strftime('%s'))
+            'exp': str(time.mktime(exactdatetime.timetuple()))[:-2]
         }, settings.SECRET_KEY, algorithm='HS256')
 
         return token.decode('utf-8')
