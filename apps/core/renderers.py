@@ -1,7 +1,6 @@
 import json
 
 from rest_framework.renderers import JSONRenderer
-from rest_framework.utils.serializer_helpers import ReturnList
 
 
 class CustomJSONRenderer(JSONRenderer):
@@ -24,7 +23,6 @@ class CustomJSONRenderer(JSONRenderer):
         elif data.get('errors', None) is not None:
             return super(CustomJSONRenderer, self).render(data)
 
-        else:
-            return json.dumps({
-                self.object_label: data
-            })
+        return json.dumps({
+            self.object_label: data
+        })

@@ -4,7 +4,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 from django.db import models
 from django.conf import settings
 
-from core.models import TimestampedModel
+from apps.core.models import TimestampedModel
 
 
 class Profile(TimestampedModel):
